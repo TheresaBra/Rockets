@@ -2,7 +2,6 @@
 class Rocket {
     private static rockets:Rocket[] = []; 
     private thrusters:Thruster[] =[]; 
-    // private nrThrusters:number = 0; 
     private powerRocket:number = 0;
     private code:string;
      
@@ -10,14 +9,9 @@ class Rocket {
     constructor(code:string){
         this.code = code;
         this.thrusters = []; 
-        // !code || code.trim().length === 0
+       
 		Rocket.rockets.push(this); 
     }
-
-    //setters// 
-    // set setNrThrusters (nrThrusters:number){
-    //     this.nrThrusters = nrThrusters;
-    // }
    
     set setPowerRocket(powerRocket:number){
         this.powerRocket = powerRocket;
@@ -25,10 +19,7 @@ class Rocket {
     set setThrusters(thrusters:Thruster[]){
         this.thrusters = thrusters; 
     }
-    //getters//
-    // get getNrThrusters(){
-    //     return this.nrThrusters;
-    // }
+   
     get getCode():string{
         return this.code; 
     }
@@ -41,12 +32,12 @@ class Rocket {
     
     toString(){
         for (let rocket of rockets){
-
-            return (
-                    "Code: " + this.getCode + "; " +
-                    "Number of thrusters: " + rocket.thrusters.length + "; " +
-                    "Possible max. power rocket: " + rocket.possibleMaxPowerAllThruster() + "; " +
-                    "Current total power rocket: " + rocket.CurrentTotalPower()
+            return (`
+				    <span>
+                    Rocket:  ${this.getCode} 
+                    <li>Number of thrusters: ${rocket.thrusters.length} </li>
+                    <li>Possible max. power:  ${rocket.possibleMaxPowerAllThruster()}</li>
+                    <li>Current total power:  ${rocket.CurrentTotalPower()}</li></span></br>`
                 ); 
         }
     }
@@ -56,7 +47,6 @@ class Rocket {
                 for (let thruster of this.thrusters) {
             showMaxPower += (thruster.getMaxPower);
         }
-    //    showMaxPower = showMaxPower.substr(showMaxPower.length, - 2);
 		
 		return showMaxPower;
 	}

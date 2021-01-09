@@ -1,100 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
     <title>Rockets</title>
 </head>
-<body>
 
-    <div class="container" id="rocket"> 
-        <div class="col">
-            <div class="jumbotron_createCar">
-                <div class="mx-auto">
-                    <div class="row d-block">
-                        <div class="col">
-                            <h4>Rockets</h4>
+<body>
+    <div class="container" style="width: 90%;">
+        <div class="row d-block">
+            <div class="col">
+                <h1>Rockets</h1>
+            </div>
+            <br>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Create new rocket</h4>
+                                    <p> 
+                                    <input type="text" id="code" value="" placeholder="Enter code">
+                                    </p>
+                                    <button type="button" class="btn btn-outline-dark btn-md" onclick="createRocket()">Create rocket</button>
+                                </div>
+                            </div>
                         </div>
-                    </br>
-                        <div class="col">
-                            <h6>Create Rockets</h6>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                    <input type="text" id="code" value="" placeholder="Code rocket">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-3">   
-                                    <button type="button" class="btn btn-outline-warning btn-md" onclick="createRocket()">Create Rocket </button>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="col">
-                            <h6>Add Thrusters</h6>
-                            <div class="form-row">
-                                <div class="form-group  col-3">
-                                <input type="text" id="codeRocket" value="" placeholder="Code rocket">
-                                </div>
-                                <div class="form-group col-3">   
-                                <input type="text" id="model" value="" placeholder="Thruster model">
-                                </div>
-                                <div class="form-group col-3">   
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                <h4>Add a thruster to the rocket</h4>
+                                <p> 
+                                    <input type="text" id="codeRocket" value="" placeholder="Code of the rocket">
+                                    <input type="text" id="model" value="" placeholder="Type of thruster">
                                     <input type="number" id="maxPower" value="" placeholder="Max. power thruster">
+                                </p>
+                                <button type="button" class="btn btn-outline-dark btn-xs" onclick="addThruster()">Add Thrusters</button>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <button type="button" class="btn btn-outline-warning btn-md" onclick="addThruster()">Add Thruster </button>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Modify power of the rocket</h4>
+                                    <p> 
+                                        <button type="button" class="btn btn-outline-success" onclick="accRocket()">+</i></button>
+                                        <br>
+                                        <br>
+                                        <input type="text" id="codeRocket1" value="" placeholder="Code of the rocket">
+                                        <br>
+                                        <br>
+                                        <button type="button" class="btn btn-outline-danger btn-md" onclick="brakeRocket()">-</button>
+                                    </p>
+                                </div>
                             </div>
-                        </br>
+                        </div>
                     </div>
-                        <div class="col">
-                            <h6>Modify Rocket</h6>
-                            <form method="POST" action="index.html" id="form_thrusters">
-                                <div class="form-row">
-                                    <div class="form-group col">
-                                        <div class="form-row">
-                                            <div class="form-group col">
-                                                <button type="button" class="btn btn-success btn-md" onclick="accRocket()">Accelerate Rocket </button>
-                                            </div>
-                                            <div class="form-group col">
-                                                <input type="text" id="codeRocket1" value="" placeholder="Code rocket">
-                                                
-                                            </div>
-                                            <div class="form-group col">
-                                                <button type="button" class="btn btn-secondary btn-md" onclick="brakeRocket()">Brake Rocket</button>
-                                            </div>
-                                            <!-- <div class="form-group col-sm-3">
-                                                <button type="button" class="btn btn-outline-warning btn-md" onclick="brakeRocket()">Brake Rocket 2</button>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <h6>Print Rockets</h6>
-                                <div class="form-row">
-                                    <div class="form-group col">
-                                        <div class="form-row"  id="print">
-                                            <div class="form-group col-sm-2">
-                                                <button type="button" class="btn bg-warning btn-md" onclick="printRockets()">Print rockets</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </br>
-                                <h6>Rocket Info</h6>
-                                <div class="form-row">
-                                    <div class="form-group col">
-                                        <output type="text" name="rocketInfo" id="rocketInfo" value="" class= "rocketInfo form-control">
-                                    </div>
-                                </div>
-                            </form>
+                    <br>
+                    <div class="col">
+                        <div class="cards-banner-one">
+                            <div class="mx-auto">
+                                <button type="button" class="btn btn-outline-warning btn-md" onclick="printRockets()">List rockets</button>
+                                <br>
+                                <br>
+                                <p class="list" id ="output"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,7 +83,19 @@
         </div>
     </div>
 
-    <script src="Rocket_Thruster.js"></script>
-    <script src="functions.js"></script>
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+            <script src="Rocket_Thruster.js"></script>
+            <script src="functions.js"></script>
+            
 </body>
+
 </html>

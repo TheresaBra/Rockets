@@ -35,21 +35,26 @@ function createRocket(){
     let code = (document.getElementById("code") as HTMLInputElement).value; 
     let exist = false; 
     let newRocket; 
+    if (code ==""){
+        alert("Please enter code");
+    } else{
 
-    for (let rocket of rockets){
-        if (rocket.getCode == code){
-            exist = true;
-            alert("The rocket already exists"); 
+        for (let rocket of rockets){
+            if (rocket.getCode == code){
+                exist = true;
+                alert("The rocket already exists"); 
+            }
         }
+    
+        if(!exist){
+            newRocket = new Rocket(code);
+            rockets.push(newRocket); 
+            console.log(rockets);
+            (document.getElementById("output")as HTMLElement).innerHTML = rockets.join("").toString(); 
+        }
+        
+    (document.getElementById("code") as HTMLInputElement).value = "";
     }
-  
-    if(!exist){
-        newRocket = new Rocket(code);
-        rockets.push(newRocket); 
-        console.log(rockets);
-        (document.getElementById("rocketInfo")as HTMLElement).innerHTML = rockets.toString(); 
-    }
-   (document.getElementById("code") as HTMLInputElement).value = "";
 }
 
 function addThruster(){
@@ -72,7 +77,6 @@ function addThruster(){
             // console.log(rocket.CurrentTotalPower());
             // console.log(rocket.possibleMaxPowerAllThruster());
             console.log(rocket.toString());
-            // (document.getElementById("rocketInfo")as HTMLElement).innerHTML = rocket.toString(); 
         }
     }
     
@@ -89,7 +93,7 @@ function accRocket(){
         if (rocket.code == code){
             exist = true;
             rocket.speedUp();
-            (document.getElementById("rocketInfo")as HTMLElement).innerHTML = "Current total power rocket: " + rocket.CurrentTotalPower();
+            (document.getElementById("output")as HTMLElement).innerHTML = "Current total power rocket: " + rocket.CurrentTotalPower();
             console.log(thrusters); 
             console.log(rocket.thrusters);
             console.log(rocket.toString());
@@ -110,21 +114,24 @@ function brakeRocket(){
         if (rocket.code == code){
             exist = true;
             rocket.speedDown();
-            (document.getElementById("rocketInfo")as HTMLElement).innerHTML = "Current total power rocket: " + rocket.code + ": " + rocket.CurrentTotalPower();
+            (document.getElementById("output")as HTMLElement).innerHTML = "Current total power rocket: " + rocket.code + ": " + rocket.CurrentTotalPower();
             console.log(thrusters); 
             console.log(rocket.thrusters);
             console.log(rocket.toString());
         }
     }
     if(!exist){
-            alert("The rocket does not exist"); 
-        }
+        alert("The rocket does not exist"); 
+    }
+
     (document.getElementById("codeRocket1") as HTMLInputElement).value = "";
 
 }
 function printRockets(){
+    let content=""; 
     for (let rocket of rockets){
-        rocket.toString(); 
+        content+= rocket.toString(); 
     }
+    (document.getElementById("output")as HTMLElement).innerHTML = content; 
 }
 

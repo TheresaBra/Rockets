@@ -2,18 +2,12 @@
 var Rocket = /** @class */ (function () {
     function Rocket(code) {
         this.thrusters = [];
-        // private nrThrusters:number = 0; 
         this.powerRocket = 0;
         this.code = code;
         this.thrusters = [];
-        // !code || code.trim().length === 0
         Rocket.rockets.push(this);
     }
     Object.defineProperty(Rocket.prototype, "setPowerRocket", {
-        //setters// 
-        // set setNrThrusters (nrThrusters:number){
-        //     this.nrThrusters = nrThrusters;
-        // }
         set: function (powerRocket) {
             this.powerRocket = powerRocket;
         },
@@ -28,10 +22,6 @@ var Rocket = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Rocket.prototype, "getCode", {
-        //getters//
-        // get getNrThrusters(){
-        //     return this.nrThrusters;
-        // }
         get: function () {
             return this.code;
         },
@@ -55,10 +45,7 @@ var Rocket = /** @class */ (function () {
     Rocket.prototype.toString = function () {
         for (var _i = 0, rockets_1 = rockets; _i < rockets_1.length; _i++) {
             var rocket = rockets_1[_i];
-            return ("Code: " + this.getCode + "; " +
-                "Number of thrusters: " + rocket.thrusters.length + "; " +
-                "Possible max. power rocket: " + rocket.possibleMaxPowerAllThruster() + "; " +
-                "Current total power rocket: " + rocket.CurrentTotalPower());
+            return ("\n\t\t\t\t    <span>\n                    Rocket:  " + this.getCode + " \n                    <li>Number of thrusters: " + rocket.thrusters.length + " </li>\n                    <li>Possible max. power:  " + rocket.possibleMaxPowerAllThruster() + "</li>\n                    <li>Current total power:  " + rocket.CurrentTotalPower() + "</li></span></br>");
         }
     };
     Rocket.prototype.possibleMaxPowerAllThruster = function () {
@@ -67,7 +54,6 @@ var Rocket = /** @class */ (function () {
             var thruster = _a[_i];
             showMaxPower += (thruster.getMaxPower);
         }
-        //    showMaxPower = showMaxPower.substr(showMaxPower.length, - 2);
         return showMaxPower;
     };
     Rocket.prototype.CurrentTotalPower = function () {
